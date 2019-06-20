@@ -1,4 +1,5 @@
 require "winwin/version"
+require "negotiation"
 
 module Winwin
   class Error < StandardError; end

@@ -16,8 +16,8 @@ Enforcement	CODE_OF_CONDUCT.md	/^## Enforcement$/;"	s
 Error	lib/winwin.rb	/^  class Error < StandardError; end$/;"	c	module:Winwin
 Installation	README.md	/^## Installation$/;"	s
 License	README.md	/^## License$/;"	s
+Negotiation	lib/negotiation.rb	/^class Negotiation$/;"	c
 Negotiation	spec/winwin_spec.rb	/^  describe "Negotiation" do$/;"	d
-Negotiation	spec/winwin_spec.rb	/^ class Negotiation$/;"	c
 Our Pledge	CODE_OF_CONDUCT.md	/^## Our Pledge$/;"	s
 Our Responsibilities	CODE_OF_CONDUCT.md	/^## Our Responsibilities$/;"	s
 Our Standards	CODE_OF_CONDUCT.md	/^## Our Standards$/;"	s
@@ -28,8 +28,8 @@ Winwin	lib/winwin.rb	/^module Winwin$/;"	m
 Winwin	lib/winwin/version.rb	/^module Winwin$/;"	m
 Winwin	spec/winwin_spec.rb	/^RSpec.describe Winwin do$/;"	d
 configure	lib/winwin.rb	/^  def self.configure$/;"	S	module:Winwin
+initialize	lib/negotiation.rb	/^   def initialize$/;"	f	class:Negotiation
 initialize	lib/winwin.rb	/^    def initialize$/;"	f	class:Winwin.Configuration
-initialize	spec/winwin_spec.rb	/^   def initialize$/;"	f	class:Negotiation
-ko!	spec/winwin_spec.rb	/^   def ko!$/;"	f	class:Negotiation
-ok!	spec/winwin_spec.rb	/^   def ok!$/;"	f	class:Negotiation
-ok?	spec/winwin_spec.rb	/^   def ok?$/;"	f	class:Negotiation
+ko!	lib/negotiation.rb	/^   def ko!$/;"	f	class:Negotiation
+ok!	lib/negotiation.rb	/^   def ok!$/;"	f	class:Negotiation
+ok?	lib/negotiation.rb	/^   def ok?$/;"	f	class:Negotiation
