@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/07796ea/
+Attribution	CODE_OF_CONDUCT.md	/^## Attribution$/;"	s
+Code of Conduct	README.md	/^## Code of Conduct$/;"	s
+Contributing	README.md	/^## Contributing$/;"	s
+Contributor Covenant Code of Conduct	CODE_OF_CONDUCT.md	/^# Contributor Covenant Code of Conduct$/;"	c
+Development	README.md	/^## Development$/;"	s
+Enforcement	CODE_OF_CONDUCT.md	/^## Enforcement$/;"	s
+Error	lib/winwin.rb	/^  class Error < StandardError; end$/;"	c	module:Winwin
+Installation	README.md	/^## Installation$/;"	s
+License	README.md	/^## License$/;"	s
+Our Pledge	CODE_OF_CONDUCT.md	/^## Our Pledge$/;"	s
+Our Responsibilities	CODE_OF_CONDUCT.md	/^## Our Responsibilities$/;"	s
+Our Standards	CODE_OF_CONDUCT.md	/^## Our Standards$/;"	s
+Scope	CODE_OF_CONDUCT.md	/^## Scope$/;"	s
+Usage	README.md	/^## Usage$/;"	s
+Winwin	README.md	/^# Winwin$/;"	c
+Winwin	lib/winwin.rb	/^module Winwin$/;"	m
+Winwin	lib/winwin/version.rb	/^module Winwin$/;"	m
+Winwin	spec/winwin_spec.rb	/^RSpec.describe Winwin do$/;"	d
