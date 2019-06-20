@@ -31,7 +31,7 @@ RSpec.describe Winwin do
   end
 
  class Negotiation
-   attr_accessor :deal_price 
+   attr_accessor :deal_price, :margin 
    def initialize
      ok!
    end
@@ -65,5 +65,12 @@ RSpec.describe Winwin do
       negotiation.deal_price = 10.00
       expect(10.00).to eq negotiation.deal_price
     end
+    it "should know the margin" do
+      negotiation = Negotiation.new
+      negotiation.margin = 10.00
+      expect(10.00).to eq negotiation.margin
+    end
+
+
   end
 end
