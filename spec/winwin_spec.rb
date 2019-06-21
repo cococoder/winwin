@@ -1,3 +1,8 @@
+require 'uri'
+require 'net/http'
+require 'json'
+
+
 RSpec.describe Winwin do
  describe "Configuration" do
     it 'should know the apir url' do
@@ -106,7 +111,7 @@ RSpec.describe Winwin do
         end
       end
       context "Api:Execution" do
-        it "should calculate the deal price" do
+        xit "should calculate the deal price" do
           api = Winwin::Api.new
         
           result = api.start
@@ -119,6 +124,49 @@ RSpec.describe Winwin do
            expect(result.margin).to eq(10.00)
         end
       end
+    end
+
+    describe "Api::RemoteExecution" do
+      let(:host) { "http://localhost:3000" } 
+      it "should connect to api" do
+        VCR.use_cassette("ok") do
+          connect(host: host,path: "negotiations") do |url,http|
+            request = build_request(method: :get,url: url)
+            response = build_response(http,request)
+            expect(response.code).to eq("200")
+          end
+  
+        end
+      end
+      it "should connect to api ane get back a 500 error" do
+        VCR.use_cassette("ko") do
+          connect(host: host,path: "negotiations") do |url,http|
+            request = build_request(method: :get,url: url)
+            response = build_response(http,request)
+            expect(response.code).to eq("500")
+          end
+        end
+      end
+
+      it "should get deal price" do
+        VCR.use_cassette("deal_ok") do
+          url = URI("http://localhost:3000/negotiations")
+
+          http = Net::HTTP.new(url.host, url.port)
+
+          request = Net::HTTP::Post.new(url)
+          request["raiiar-tag"] = 'raiiar'
+          request["raiiar-token"] = 'r4114r'
+          request["content-type"] = 'application/x-www-form-urlencoded'
+          request.body = "negotiation%5Buid%5D=deal_ok"
+
+          response = http.request(request)
+          data = JSON.parse(response.read_body)
+          
+        end
+      end
+
+        
     end
   end
 

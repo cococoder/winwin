@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3000/negotiations
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:3000
+      Raiiar-Tag:
+      - raiiar
+      Raiiar-Token:
+      - r4114r
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"c66f95fd3d1f6e968884ec269fe6e183"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8f10d5bd-5d44-46ca-af75-4df90a5b5f7f
+      X-Runtime:
+      - '0.023548'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '[{"id":1,"maximum":null,"minimum":null,"deal":null,"workflow_state":"negotiating","summary":null,"ref":"winwinjvsUvE7IqGo=","uid":"test","created_at":"2019-06-21T10:21:57.815Z","updated_at":"2019-06-21T10:21:57.815Z","margin":null,"api_key_id":1}]'
+    http_version: 
+  recorded_at: Fri, 21 Jun 2019 10:22:27 GMT
+recorded_with: VCR 5.0.0

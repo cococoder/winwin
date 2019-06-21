@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/negotiations
+    body:
+      encoding: UTF-8
+      string: negotiation%5Buid%5D=deal_ok
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:3000
+      Raiiar-Tag:
+      - raiiar
+      Raiiar-Token:
+      - r4114r
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 89689b55-c73a-46c9-965a-234d2ccd2283
+      X-Runtime:
+      - '0.023620'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"uid":["must be unique"]}'
+    http_version: 
+  recorded_at: Fri, 21 Jun 2019 11:33:21 GMT
+recorded_with: VCR 5.0.0

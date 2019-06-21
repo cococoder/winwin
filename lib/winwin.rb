@@ -1,13 +1,46 @@
 require "winwin/version"
 require "negotiation"
+require 'uri'
+require 'net/http'
 
 module Winwin
+  module HttpMethods 
+    def connect(host:,path:)
+        url = URI("#{host}/#{path}")
+        http = Net::HTTP.new(url.host, url.port)
+        yield url,http
+    end
+    def build_request(method:,url:,body:nil)
+        request = nil
+        case method
+            when :put 
+                request =  Net::HTTP::Put.new(url)
+            when :post
+                request = Net::HTTP::Post.new(url)
+            when :get
+                request = Net::HTTP::Get.new(url)
+            else
+              raise "Opooops ! unkown method!"
+        end
+        request["raiiar-tag"] = 'raiiar'
+        request["raiiar-token"] = 'r4114r'
+        request["content-type"] = 'application/x-www-form-urlencoded'
+        request.body = body if body
+        request
+    end
+    def build_response(http,request)
+        http.request(request)
+    end
+    def as_json(response)
+      JSON.parse(response.read_body)
+    end
+  end
+
   class Api
-    
     def initialize
       @execution_stratergies = {
         local: LocalExecution, 
-        remote:RemoteExecution
+        remote: RemoteExecution
       }
     end
 
@@ -20,6 +53,7 @@ module Winwin
       end
     end
     class RemoteExecution
+      include HttpMethods
       def execute(maximum:,minimum:)
         result = Result.new
 

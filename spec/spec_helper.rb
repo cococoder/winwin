@@ -1,6 +1,16 @@
+require 'rubygems'
 require "bundler/setup"
 require "winwin"
 require "byebug"
+require 'vcr'
+require 'webmock'
+
+include Winwin::HttpMethods
+
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.hook_into :webmock
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
