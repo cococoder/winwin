@@ -23,6 +23,7 @@ Our Responsibilities	CODE_OF_CONDUCT.md	/^## Our Responsibilities$/;"	s
 Our Standards	CODE_OF_CONDUCT.md	/^## Our Standards$/;"	s
 Scope	CODE_OF_CONDUCT.md	/^## Scope$/;"	s
 Usage	README.md	/^## Usage$/;"	s
+WinWin#Negotatiate	spec/winwin_spec.rb	/^  describe "WinWin#Negotatiate" do$/;"	d
 Winwin	README.md	/^# Winwin$/;"	c
 Winwin	lib/winwin.rb	/^module Winwin$/;"	m
 Winwin	lib/winwin/version.rb	/^module Winwin$/;"	m
@@ -31,5 +32,6 @@ configure	lib/winwin.rb	/^  def self.configure$/;"	S	module:Winwin
 initialize	lib/negotiation.rb	/^   def initialize$/;"	f	class:Negotiation
 initialize	lib/winwin.rb	/^    def initialize$/;"	f	class:Winwin.Configuration
 ko!	lib/negotiation.rb	/^   def ko!$/;"	f	class:Negotiation
+negotiate	lib/winwin.rb	/^  def self.negotiate minimum:, maximum:$/;"	S	module:Winwin
 ok!	lib/negotiation.rb	/^   def ok!$/;"	f	class:Negotiation
 ok?	lib/negotiation.rb	/^   def ok?$/;"	f	class:Negotiation

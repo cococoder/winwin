@@ -2,6 +2,29 @@ require "winwin/version"
 require "negotiation"
 
 module Winwin
+  class Api
+    class Result
+      def ok?
+        false
+      end
+    end
+    def start
+      self
+    end
+    def minimum(value)
+      @minimum = value
+      self
+    end 
+    def maximum(value)
+      @maximum = value 
+      self
+    end
+    def execute
+      result = Result.new
+
+      result
+    end
+  end
   class Error < StandardError; end
   
   class << self
@@ -13,6 +36,26 @@ module Winwin
     yield(configuration)
   end
 
+  def self.negotiate minimum:, maximum:,api: Api.new
+    result =  api.start
+      .maximum(maximum) 
+      .minimum(minimum)
+      .execute
+
+    negotiation = Negotiation.new
+
+    if result.ok?
+      negotiation.deal_price = result.deal_price
+      negotiation.margin = result.margin
+      negotiation.ok!
+    else
+      negotiation.ko!
+    end
+
+
+    negotiation 
+  end
+
   class Configuration
     attr_accessor :api_url, :token,:tag
 
@@ -21,5 +64,6 @@ module Winwin
       @token = "r4114r"
       @tag = "raiiar"
     end
-  end# Your code goes here...
+  end
+  
 end

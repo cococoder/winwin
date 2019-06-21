@@ -52,7 +52,50 @@ RSpec.describe Winwin do
       negotiation.margin = 10.00
       expect(10.00).to eq negotiation.margin
     end
-
-
   end
+
+  describe "WinWin#Negotatiate" do
+
+    it "should return a negotation" do
+      negotiation = Winwin.negotiate(maximum: 10.00, minimum: 20.00) 
+      expect(negotiation).not_to be_nil
+    end
+    it "should return a negotation" do
+        api = Winwin::Api.new
+        result = Object.new
+
+        expect(result).to receive(:ok?) {true}
+        expect(result).to receive(:deal_price) {15.00}
+        expect(result).to receive(:margin) {10.00}
+
+        expect(api).to receive(:start) { api}
+        expect(api).to receive(:maximum).with(20.00) { api}
+        expect(api).to receive(:minimum).with(10.00)  { api}
+
+        expect(api).to receive(:execute) { result }
+      negotiation = Winwin.negotiate(maximum: 20.00, minimum: 10.00,api: api) 
+      expect(negotiation.ok?).to eq(true)
+    end
+
+    context "Api" do
+      it "should call start on the api" do
+        api = Winwin::Api.new
+        result = Object.new
+
+        expect(result).to receive(:ok?) {true}
+        expect(result).to receive(:deal_price) {15.00}
+        expect(result).to receive(:margin) {10.00}
+
+        expect(api).to receive(:start) { api}
+        expect(api).to receive(:maximum).with(20.00) { api}
+        expect(api).to receive(:minimum).with(10.00)  { api}
+        expect(api).to receive(:execute) { result }
+
+        negotiation = Winwin.negotiate(maximum: 20.00,minimum: 10.00,api: api) 
+        expect(negotiation.ok?).to eq(true)
+        
+      end
+    end
+  end
+
 end
