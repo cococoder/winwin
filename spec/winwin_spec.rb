@@ -150,19 +150,14 @@ RSpec.describe Winwin do
 
       it "should get deal price" do
         VCR.use_cassette("deal_ok") do
-          url = URI("http://localhost:3000/negotiations")
 
-          http = Net::HTTP.new(url.host, url.port)
+          connect(host: host,path: "negotiations/deal_ok") do |url,http|
+            request = build_request(method: :put,url: url,body:"negotiation%5Bmaximum%5D=10.00&negotiation%5Bminimum%5D=20.00")
+            data = as_json(build_response(http,request))
 
-          request = Net::HTTP::Post.new(url)
-          request["raiiar-tag"] = 'raiiar'
-          request["raiiar-token"] = 'r4114r'
-          request["content-type"] = 'application/x-www-form-urlencoded'
-          request.body = "negotiation%5Buid%5D=deal_ok"
-
-          response = http.request(request)
-          data = JSON.parse(response.read_body)
-          
+             expect(data['deal']).to eq(15.00)
+             expect(data['margin']).to eq(10.00)
+          end
         end
       end
 

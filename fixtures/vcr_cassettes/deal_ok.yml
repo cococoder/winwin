@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://localhost:3000/negotiations
+    method: put
+    uri: http://localhost:3000/negotiations/deal_ok
     body:
       encoding: UTF-8
-      string: negotiation%5Buid%5D=deal_ok
+      string: negotiation%5Bmaximum%5D=10.00&negotiation%5Bminimum%5D=20.00
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -23,22 +23,24 @@ http_interactions:
       - application/x-www-form-urlencoded
   response:
     status:
-      code: 422
-      message: Unprocessable Entity
+      code: 200
+      message: OK
     headers:
       Content-Type:
       - application/json; charset=utf-8
+      Etag:
+      - W/"b4e88f688c83c285346f8a916a8276a9"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 89689b55-c73a-46c9-965a-234d2ccd2283
+      - ef8f0611-e3e3-4ab0-88ca-2bb2d073accd
       X-Runtime:
-      - '0.023620'
+      - '0.355350'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"uid":["must be unique"]}'
+      string: '{"id":2,"maximum":20.0,"minimum":10.0,"workflow_state":"ok","api_key_id":1,"uid":"deal_ok","ref":"winwinYvqx82yz8b4=","deal":15.00,"summary":null,"created_at":"2019-06-21T10:51:53.707Z","updated_at":"2019-06-21T12:15:02.876Z","margin":10.00,"actions":[]}'
     http_version: 
-  recorded_at: Fri, 21 Jun 2019 11:33:21 GMT
+  recorded_at: Fri, 21 Jun 2019 12:15:03 GMT
 recorded_with: VCR 5.0.0
