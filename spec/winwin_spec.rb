@@ -96,6 +96,18 @@ RSpec.describe Winwin do
         
       end
     end
+
+    describe "Api::Local" do
+      context "Result" do
+        it "should know when is ok" do
+           result  = Winwin::Api::Result.new
+           result.ok!
+           
+           expect(result.ok?).to be_truthy
+        end
+        
+      end
+    end
   end
 
 end

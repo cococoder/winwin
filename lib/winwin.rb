@@ -4,9 +4,15 @@ require "negotiation"
 module Winwin
   class Api
     class Result
+      def initialize
+        @result = false
+      end
       attr_accessor :deal_price,:margin
       def ok?
-        false
+        @result
+      end
+      def ok!
+        @result = true
       end
     end
     def start
@@ -22,7 +28,6 @@ module Winwin
     end
     def execute
       result = Result.new
-
       result
     end
   end
