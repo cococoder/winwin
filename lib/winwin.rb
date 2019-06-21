@@ -12,15 +12,17 @@ module Winwin
     end
 
     class LocalExecution
-      def execute
+      def execute(maximum:,minimum:)
+        result = Result.new
+
 
         raise "here!"
       end
     end
     class RemoteExecution
-      def execute
+      def execute(maximum:,minimum:)
         result = Result.new
-        
+
         api_url = Winwin.configuration.api_url
         token = Winwin.configuration.token
         tag = Winwin.configuration.tag
@@ -52,7 +54,7 @@ module Winwin
       self
     end
     def execute(stratergy: :remote)
-      @execution_stratergies[stratergy].new.execute
+      @execution_stratergies[stratergy].new.execute(maximum: @maximum,minimum:@minimum)
     end
   end
   class Error < StandardError; end
@@ -93,6 +95,7 @@ module Winwin
       @api_url = 'http://raiiar.com/api'
       @token = "r4114r"
       @tag = "raiiar"
+      
     end
   end
   
