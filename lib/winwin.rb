@@ -3,11 +3,36 @@ require "negotiation"
 
 module Winwin
   class Api
+    
+    def initialize
+      @execution_stratergies = {
+        local: LocalExecution, 
+        remote:RemoteExecution
+      }
+    end
+
+    class LocalExecution
+      def execute
+
+        raise "here!"
+      end
+    end
+    class RemoteExecution
+      def execute
+        result = Result.new
+        
+        api_url = Winwin.configuration.api_url
+        token = Winwin.configuration.token
+        tag = Winwin.configuration.tag
+
+        result
+      end
+    end
     class Result
+      attr_accessor :deal_price,:margin
       def initialize
         @result = false
       end
-      attr_accessor :deal_price,:margin
       def ok?
         @result
       end
@@ -26,9 +51,8 @@ module Winwin
       @maximum = value 
       self
     end
-    def execute
-      result = Result.new
-      result
+    def execute(stratergy: :remote)
+      @execution_stratergies[stratergy].new.execute
     end
   end
   class Error < StandardError; end

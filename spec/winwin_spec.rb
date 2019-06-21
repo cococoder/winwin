@@ -102,10 +102,22 @@ RSpec.describe Winwin do
         it "should know when is ok" do
            result  = Winwin::Api::Result.new
            result.ok!
-           
            expect(result.ok?).to be_truthy
         end
+      end
+      context "Api:Execution" do
+        it "should calculate the deal price" do
+          api = Winwin::Api.new
         
+          result = api.start
+           .maximum(20.00)
+           .minimum(10.00)
+           .execute(stratergy: :local)
+
+           expect(result.ok?).to be_truthy
+           expect(result.deal_price).to eq(15.00)
+           expect(result.margin).to eq(10.00)
+        end
       end
     end
   end
