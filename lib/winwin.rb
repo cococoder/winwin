@@ -4,6 +4,7 @@ require "negotiation"
 module Winwin
   class Api
     class Result
+      attr_accessor :deal_price,:margin
       def ok?
         false
       end
